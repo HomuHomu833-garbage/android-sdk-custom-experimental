@@ -2,7 +2,7 @@ set(SIMPLEPERF_DIR ${SRC}/extras/simpleperf)
 set(SIMPLEPERF_NONLINUX ${SIMPLEPERF_DIR}/nonlinux_support)
 
 add_compile_definitions(
-    USE_BIONIC_UAPI_HEADERS
+    # USE_BIONIC_UAPI_HEADERS
     NO_LIBDEXFILE_SUPPORT
 )
 
