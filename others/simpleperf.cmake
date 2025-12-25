@@ -132,7 +132,7 @@ target_link_libraries(libsimpleperf
     libutils
     libprotobuf-lite
     libopencsd_decoder
-    libz
+    ${CMAKE_PREFIX_PATH}/lib/libz.a
     libziparchive
     libzstd
     fmt::fmt
