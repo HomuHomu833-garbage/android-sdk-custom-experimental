@@ -321,7 +321,8 @@ jobs:
                   -Dprotobuf_BUILD_TESTS=OFF \
                   -DABSL_PROPAGATE_CXX_STD=ON \
                   -DCMAKE_BUILD_TYPE=MinSizeRel \
-                  -DPROTOC_PATH="$protoc"
+                  -DPROTOC_PATH="$protoc" \
+                  simpleperf
 
               local start_time=$(date +%s)
 
