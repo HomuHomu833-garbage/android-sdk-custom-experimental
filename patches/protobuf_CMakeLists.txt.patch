@@ -7,7 +7,7 @@ index 08cb330..85882a2 100644
    ${ZLIB_INCLUDE_DIRECTORIES}
    ${protobuf_BINARY_DIR}
 -  ${protobuf_SOURCE_DIR}/src)
-+  ${protobuf_SOURCE_DIR}/src"
++  ${protobuf_SOURCE_DIR}/src
 +  ${protobuf_SOURCE_DIR}/config)
  
 -set(protobuf_ABSL_PROVIDER "module" CACHE STRING "Provider of absl library")
