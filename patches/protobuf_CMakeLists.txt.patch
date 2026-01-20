@@ -2,10 +2,12 @@ diff --git a/src/protobuf/CMakeLists.txt b/src/protobuf/CMakeLists.txt
 index 08cb330..85882a2 100644
 --- a/src/protobuf/CMakeLists.txt 2023-09-20 13:56:08.461395523 +0800
 +++ b/src/protobuf/CMakeLists.txt 2023-09-20 13:56:08.461395523 +0800
-@@ -280,8 +280,9 @@ include_directories(
+@@ -279,9 +279,10 @@ endif (MSVC)
+ include_directories(
    ${ZLIB_INCLUDE_DIRECTORIES}
    ${protobuf_BINARY_DIR}
-   ${protobuf_SOURCE_DIR}/src)
+-  ${protobuf_SOURCE_DIR}/src)
++  ${protobuf_SOURCE_DIR}/src"
 +  ${protobuf_SOURCE_DIR}/config)
  
 -set(protobuf_ABSL_PROVIDER "module" CACHE STRING "Provider of absl library")
