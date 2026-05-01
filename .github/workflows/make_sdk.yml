@@ -11,7 +11,7 @@ on:
       tag:
         description: "Android Source Tag"
         required: true
-        default: "android-16.0.0_r4"
+        default: "android-security-16.0.0_r5"
 
 permissions:
   contents: write
