@@ -28,6 +28,8 @@ jobs:
       matrix:
         include:
           - target_arch: aarch64
+            target_triple: aarch64-windows-gnu
+          - target_arch: aarch64
             target_triple: aarch64-linux-musl
           - target_arch: aarch64_be
             target_triple: aarch64_be-linux-musl
