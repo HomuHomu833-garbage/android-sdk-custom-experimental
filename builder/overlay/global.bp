@@ -259,8 +259,18 @@ cc_defaults {
             cflags: ["-DOPENSSL_STATIC_ARMCAP"],
         },
         // Abseil reads the PowerPC timebase frequency on glibc, Linux, AIX and
-        // FreeBSD only and #errors elsewhere; take its clock_gettime() cycle
-        // clock instead. Global, as its headers read the switch too.
+        // FreeBSD only (older releases: glibc and FreeBSD) and #errors
+        // elsewhere; take its clock_gettime() cycle clock instead. Global, as
+        // its headers read the switch too.
+        musl_powerpc: {
+            cflags: ["-DABSL_USE_UNSCALED_CYCLECLOCK=0"],
+        },
+        musl_powerpc64: {
+            cflags: ["-DABSL_USE_UNSCALED_CYCLECLOCK=0"],
+        },
+        musl_powerpc64le: {
+            cflags: ["-DABSL_USE_UNSCALED_CYCLECLOCK=0"],
+        },
         netbsd_powerpc: {
             cflags: ["-DABSL_USE_UNSCALED_CYCLECLOCK=0"],
         },

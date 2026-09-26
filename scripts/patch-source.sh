@@ -405,6 +405,25 @@ sed -i 's|#include <sys/user.h>|#if !defined(__NetBSD__)\n#include <sys/user.h>\
 sed -i 's/^#if !defined(__APPLE__) \&\& !defined(__BIONIC__)$/#if !defined(__APPLE__) \&\& !defined(__BIONIC__) \&\& !defined(__FreeBSD__) \&\& !defined(__NetBSD__) \&\& !defined(__OpenBSD__)/' \
   "src/logging/liblog/logger_write.cpp"
 
+# protobuf port_def.inc: older releases enable [[clang::musttail]] on every CPU
+# but a denylist, and LLVM's backend can't honour it on mips64 and others
+# ("failed to perform tail call elimination"). Newer ones allow only aarch64
+# and x86_64; take that list wherever the old one is still there.
+python3 << 'PYEOF'
+import re
+
+path = 'src/protobuf/src/google/protobuf/port_def.inc'
+with open(path) as f:
+    content = f.read()
+old = re.compile(r'#if ABSL_HAVE_CPP_ATTRIBUTE\(clang::musttail\) && !defined\(__arm__\) &&.*?!defined\(__i386__\)\n', re.S)
+if old.search(content):
+    content = old.sub('#if ABSL_HAVE_CPP_ATTRIBUTE(clang::musttail) && (defined(__aarch64__) || \\\n'
+                      '    (defined(__x86_64__) && !defined(__arm64ec__)) || defined(_M_X64))\n', content, count=1)
+    with open(path, 'w') as f:
+        f.write(content)
+    print('protobuf musttail: limited to aarch64/x86_64')
+PYEOF
+
 # android-base/endian.h: insert a BSD branch (native <sys/endian.h>) so BSD
 # doesn't fall into the macOS/Windows #else (<winsock2.h>, hard-coded LE).
 python3 << 'PYEOF'
