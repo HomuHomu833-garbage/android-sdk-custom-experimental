@@ -424,6 +424,12 @@ if old.search(content):
     print('protobuf musttail: limited to aarch64/x86_64')
 PYEOF
 
+# fastboot_driver_interface.h: older releases use std::vector without <vector>,
+# which only llvm-mingw's libc++ doesn't pull in some other way. Upstream added
+# the include later.
+grep -q '^#include <vector>' src/core/fastboot/fastboot_driver_interface.h ||
+  sed -i 's/^#include <string>$/#include <string>\n#include <vector>/' src/core/fastboot/fastboot_driver_interface.h
+
 # android-base/endian.h: insert a BSD branch (native <sys/endian.h>) so BSD
 # doesn't fall into the macOS/Windows #else (<winsock2.h>, hard-coded LE).
 python3 << 'PYEOF'
