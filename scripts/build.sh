@@ -121,7 +121,7 @@ case "$PLATFORM" in
     # mips64 n64 and powerpc64 pick asm-generic/int-l64.h, typing __s64/__u64 as
     # 'long' and clashing with e2fsprogs. See patches/misc/force-int-ll64.h.
     case "$TARGET" in
-      mips64-*abi64|mips64el-*abi64|powerpc64-*|powerpc64le-*)
+      mips64*-linux-gnu|mips64*-linux-gnusf|mips64*-linux-musl|mips64*-linux-muslsf|powerpc64-*|powerpc64le-*)
         CROSS_CFLAGS="$CROSS_CFLAGS -include $ROOTDIR/patches/misc/force-int-ll64.h" ;;
     esac
     # x32: force local-exec TLS (lld can't relax R_X86_64_GOTTPOFF here; static so it fits).
@@ -344,10 +344,10 @@ case "$PLATFORM" in
       powerpc64le-linux-musl) ADBMDNS_RUST_TARGET=powerpc64le-unknown-linux-musl ;;
       loongarch64-linux-gnu)  ADBMDNS_RUST_TARGET=loongarch64-unknown-linux-gnu ;;
       loongarch64-linux-musl) ADBMDNS_RUST_TARGET=loongarch64-unknown-linux-musl ;;
-      arm-linux-gnueabi)      ADBMDNS_RUST_TARGET=arm-unknown-linux-gnueabi ;;
-      arm-linux-gnueabihf)    ADBMDNS_RUST_TARGET=arm-unknown-linux-gnueabihf ;;
-      arm-linux-musleabi)     ADBMDNS_RUST_TARGET=arm-unknown-linux-musleabi ;;
-      arm-linux-musleabihf)   ADBMDNS_RUST_TARGET=arm-unknown-linux-musleabihf ;;
+      arm-linux-gnusf)        ADBMDNS_RUST_TARGET=arm-unknown-linux-gnueabi ;;
+      arm-linux-gnu)          ADBMDNS_RUST_TARGET=arm-unknown-linux-gnueabihf ;;
+      arm-linux-muslsf)       ADBMDNS_RUST_TARGET=arm-unknown-linux-musleabi ;;
+      arm-linux-musl)         ADBMDNS_RUST_TARGET=arm-unknown-linux-musleabihf ;;
     esac ;;
 esac
 
