@@ -26,15 +26,14 @@ jobs:
       only: ${{ inputs.only }}
       targets: >-
         ["aarch64-linux-gnu", "aarch64-linux-musl", "aarch64be-linux-gnu",
-         "aarch64be-linux-musl", "arc-linux-gnu", "arm-linux-gnu",
+         "aarch64be-linux-musl", "arm-linux-gnu",
          "arm-linux-gnusf", "arm-linux-musl", "arm-linux-muslsf",
          "armeb-linux-gnu", "armeb-linux-gnusf", "armeb-linux-musl",
-         "armeb-linux-muslsf", "csky-linux-gnu", "csky-linux-gnusf",
-         "hexagon-linux-musl", "loongarch32-linux-gnu",
+         "armeb-linux-muslsf", "hexagon-linux-musl", "loongarch32-linux-gnu",
          "loongarch32-linux-gnusf", "loongarch64-linux-gnu",
          "loongarch64-linux-gnusf", "loongarch64-linux-musl",
          "loongarch64-linux-muslf32", "loongarch64-linux-muslsf",
-         "m68k-linux-gnu", "m68k-linux-musl", "mips-linux-gnu",
+         "mips-linux-gnu",
          "mips-linux-gnusf", "mips-linux-musl", "mips-linux-muslsf",
          "mips64-linux-gnu", "mips64-linux-gnun32", "mips64-linux-gnusf",
          "mips64-linux-musl", "mips64-linux-musln32", "mips64-linux-muslsf",
